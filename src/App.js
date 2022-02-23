@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { flexbox } from "@mui/system";
+import Axios from "axios";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -28,6 +29,21 @@ function App() {
 
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
+
+  const register = () => {
+    if ((name === "") | (password === "") | (email === "")) {
+      alert("Please complete all fields.");
+    } else {
+      Axios.post("http://localhost:3030/register", {
+        name: name,
+        password: password,
+        email: email,
+      }).then((response) => {
+        alert(response.data);
+        console.log(response);
+      });
+    }
+  };
 
   return (
     <>
@@ -98,7 +114,7 @@ function App() {
                       sx={style}
                       variant="contained"
                       onClick={() => {
-                        handleClose();
+                        register();
                         console.log(name);
                         console.log(email);
                         console.log(password);
