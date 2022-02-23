@@ -12,15 +12,8 @@ function App() {
   const [openModal, setOpenModal] = useState(false);
 
   const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
+    bgcolor: "purple",
+    color: "black",
   };
 
   const handleEmail = (e) => {
@@ -60,6 +53,7 @@ function App() {
           <span className="span"></span>
           <div className="login-buttons">
             <Button
+              sx={style}
               variant="contained"
               onClick={() => {
                 console.log(email);
@@ -68,7 +62,7 @@ function App() {
             >
               Login
             </Button>
-            <Button variant="contained" onClick={() => handleOpen()}>
+            <Button sx={style} variant="contained" onClick={() => handleOpen()}>
               Register
             </Button>
             <Modal className="modal" open={openModal} onClose={handleClose}>
@@ -101,6 +95,7 @@ function App() {
                   </div>
                   <div className="login-buttons">
                     <Button
+                      sx={style}
                       variant="contained"
                       onClick={() => {
                         handleClose();
