@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { flexbox } from "@mui/system";
+import Dialog from "@mui/material/Dialog";
 import Axios from "axios";
 
 function App() {
@@ -81,7 +82,50 @@ function App() {
             <Button sx={style} variant="contained" onClick={() => handleOpen()}>
               Register
             </Button>
-            <Modal className="modal" open={openModal} onClose={handleClose}>
+            <Dialog open={openModal} onClose={handleClose}>
+              <form className="modal-box">
+                <div className="register-items">
+                  <TextField
+                    id="outlined-basic"
+                    label="Name"
+                    variant="outlined"
+                    onChange={handleName}
+                  />
+                </div>
+                <div className="register-items">
+                  <TextField
+                    id="outlined-basic"
+                    label="Email"
+                    variant="outlined"
+                    onChange={handleEmail}
+                  />
+                </div>
+                <div className="register-items">
+                  <TextField
+                    id="outlined-basic"
+                    label="Password"
+                    variant="outlined"
+                    type="password"
+                    onChange={handlePassword}
+                  />
+                </div>
+                <div className="login-buttons">
+                  <Button
+                    sx={style}
+                    variant="contained"
+                    onClick={() => {
+                      register();
+                      console.log(name);
+                      console.log(email);
+                      console.log(password);
+                    }}
+                  >
+                    Register
+                  </Button>
+                </div>
+              </form>
+            </Dialog>
+            {/* <Modal className="modal" open={openModal} onClose={handleClose}>
               <Box>
                 <form className="modal-box">
                   <div className="register-items">
@@ -125,7 +169,7 @@ function App() {
                   </div>
                 </form>
               </Box>
-            </Modal>
+            </Modal> */}
           </div>
         </div>
       </div>
